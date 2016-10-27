@@ -608,9 +608,9 @@ Contains
         Complex (8), Allocatable :: zfft (:)
 !chase
         Integer :: nev, nex 
-        Complex (8), Allocatable :: vc (:, :), herm (:, :)
-        Real (8), Allocatable :: wc (:, :), etemp (:)
-        Complex (8), parameter :: cone = dcmplx(1.0d0, 0.0d0)
+        Complex (8), Allocatable :: vc (:, :), wc (:, :), herm (:, :)
+        Real (8), Allocatable :: etemp (:)
+        Complex (8), parameter :: zone = (1.0d0, 0.0d0)
 
         Call timesec (ts0)
 
@@ -805,7 +805,7 @@ endif
 
 !        Backtransform eigenvectors to the original problem.
 
-        CALL ztrsm( 'Left', 'U', 'N', 'Non-unit', nmatp, nev, cone, system%overlap%za, nmatp, evecfv, nmatmax )
+        CALL ztrsm( 'Left', 'U', 'N', 'Non-unit', nmatp, nev, zone, system%overlap%za, nmatp, evecfv, nmatmax )
 !LAPACK-ori
 !        CALL ztrsm( 'Left', uplo, trans, 'Non-unit', n, m, cone, b, ldb, z, ldz )
 
